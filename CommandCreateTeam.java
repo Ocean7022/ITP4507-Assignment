@@ -6,6 +6,7 @@ public class CommandCreateTeam implements Command {
     private Vector<Team> _teams;
     private int index;
     private Scanner sc;
+    private String sportType;
 
     public CommandCreateTeam(Scanner sc, Vector<Team> _teams) {
         this.sc = sc;
@@ -14,7 +15,7 @@ public class CommandCreateTeam implements Command {
 
     public void execute() {
         System.out.print("Enter sport type (v = volleyball, f = football): ");
-        String sportType = sc.nextLine();
+        sportType = sc.nextLine();
         System.out.print("Team ID: ");
         String teamID = sc.nextLine();
         System.out.print("Team name: ");
@@ -44,6 +45,9 @@ public class CommandCreateTeam implements Command {
     }
 
     public String toString() {
-        return "Create team " + team.getTeamID();
+        if (sportType.equals("v"))
+            return "Create Volleyball team, " + team.getTeamID() + ", " + team.getName();
+        else
+            return "Create Football team, " + team.getTeamID() + ", " + team.getName();
     }
 }
