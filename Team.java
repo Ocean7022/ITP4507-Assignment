@@ -1,7 +1,7 @@
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class Team {
+public abstract class Team {
     private String teamID;
     private String name;
     private Vector<Player> players;
@@ -35,10 +35,8 @@ public class Team {
         return players.elements();
     }
 
-    public void updatePlayerPosition() {
-    }
+    public abstract void updatePlayerPosition();
 
-    public void displayTeam() {
-    }
+    public abstract void displayTeam();
 }
 
