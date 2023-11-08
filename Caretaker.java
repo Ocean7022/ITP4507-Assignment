@@ -13,6 +13,10 @@ public class Caretaker {
         undoStack.push(new PlayerMemento(player, newP));
     }
 
+    public void saveTeam(Team team, String newName) {
+        undoStack.push(new TeamMemento(team, newName));
+    }
+
     public void undo() {
         if (undoStack.isEmpty()) {
             System.out.println("Nothing to undo.");
@@ -20,6 +24,7 @@ public class Caretaker {
             Memento m = undoStack.pop();
             redoStack.push(m);
             m.undo();
+            System.out.println("Command (" + m + ") is undone.");
         }
     }
 
@@ -30,6 +35,15 @@ public class Caretaker {
             Memento m = redoStack.pop();
             undoStack.push(m);
             m.redo();
+            System.out.println("Command (" + m + ") is redone.");
         }
+    }
+
+    public Memento getMementoUndo(int index) {
+        return undoStack.get(index);
+    }
+
+    public Memento getMementoRedo(int index) {
+        return redoStack.get(index);
     }
 }
