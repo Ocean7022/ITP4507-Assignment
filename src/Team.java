@@ -27,6 +27,10 @@ public abstract class Team {
         players.add(player);
     }
 
+    public void addPlayer(Player player, int index) {
+        players.add(index, player);
+    }
+
     public void removePlayer(Player player) {
         players.remove(player);
     }
@@ -35,7 +39,18 @@ public abstract class Team {
         return players.elements();
     }
 
-    public abstract void updatePlayerPosition();
+    public void updatePlayerPosition(String playerID, int newPosition) {
+        Enumeration<Player> players = getPlayers();
+        while (players.hasMoreElements()) {
+            Player player = players.nextElement();
+            if (player.getPlayerID().equals(playerID)) {
+                player.setPosition(newPosition);
+                break;
+            }
+        }
+    };
+
+    public abstract String[] getPositionsString();
 
     public abstract void displayTeam();
 }
