@@ -1,5 +1,5 @@
-
-# Class diagram
+# ITP4507 - Contemporary Topics in Software Engineering
+## Class diagram
 ### Main structure
 ```mermaid
 classDiagram
